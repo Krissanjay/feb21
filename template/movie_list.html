@@ -1,0 +1,37 @@
+
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+{% if messages %}
+            {% for message in messages %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    {{ message }}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+            {% endfor %}
+        {% endif %}
+    <br><br><div class="container">
+
+
+        <div class="row justify-content-center m-2">
+
+
+
+            {% for i in movie_list %}
+
+                <div class="col-md-4">
+                    <div class="card m-4 p-2" style="width: 25rem; height: 26rem; box-shadow: 4px 4px #c291fa; border-radius: 25px 15px;">
+                        <img src="{{i.img.url}}" style="height: 300px; width: 350px;"  class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h4 style="font-size: 17px;" class="card-title mt-1">{{ i.name }}</h4>
+
+                        </div>
+                        <span><a href="{% url 'detail' i.id %}" style="background-color: #5707b3;" class="btn btn-primary m-1">Detail</a></span>
+                    </div>
+                </div>
+
+            {% endfor %}
+
+{% endblock %}

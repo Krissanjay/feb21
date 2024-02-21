@@ -1,0 +1,29 @@
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Registration or Sign Up form in HTML CSS | CodingLab </title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+   </head>
+<body>
+
+
+  <div class="wrapper">
+    <h2 style="font-family: 'Nunito', sans-serif;">Update profile</h2>
+    <form action="{% url 'update_user' %}" method="post">
+   {% csrf_token %}
+      {{user_form.as_p}}
+
+      <button type="submit" class="btn btn-secondary">Update profile</button>
+
+
+    </form>
+      <br><a href="{% url 'update_password' %}" ><button class="btn btn-success">Update password</button></a>
+  </div>
+
+</body>
+
+</html>

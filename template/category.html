@@ -1,0 +1,44 @@
+{% extends 'base1.html' %}
+{% block content %}
+<div class="row justify-content-center">
+      <div class="col-md-5">
+        <a href="{% url 'movie_list' %}" class="btn btn-primary mt-2" >Back</a>
+          <div class="card m-5 p-2" style="width: 25rem;">
+
+              <div class="card-body">
+                  <h2>Movie Categories</h2>
+                <br><br>
+                     <form action="{% url 'thriller' %}"  method="get" class="d-flex">
+                    <button class="btn btn-outline-success" name="thriller" type="submit">Thriller</button>
+                  </form>
+                  <br>
+                  <form action="{% url 'action' %}"  method="get" class="d-flex">
+                    <button class="btn btn-outline-success" name="action" type="submit">Action</button>
+                  </form>
+                  <br>
+
+                  <form action="{% url 'scifi' %}"  method="get" class="d-flex">
+                    <button class="btn btn-outline-success" name="scifi" type="submit">Scifi</button>
+                  </form>
+                  <br>
+
+                  <form action="{% url 'horror' %}"  method="get" class="d-flex">
+                    <button class="btn btn-outline-success" name="horror" type="submit">Horror</button>
+                  </form>
+                  <br>
+
+                  <form action="{% url 'adventure' %}"  method="get" class="d-flex">
+                    <button class="btn btn-outline-success" name="adventure" type="submit">Adventure</button>
+                  </form>
+                  <br>
+
+                  <form action="{% url 'drama' %}"  method="get" class="d-flex">
+                    <button class="btn btn-outline-success" name="drama" type="submit">Drama</button>
+                  </form>
+
+
+
+
+
+              </div></div></div></div>
+{% endblock %}

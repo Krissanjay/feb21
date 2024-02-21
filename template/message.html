@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'style5.css' %}">
+</head>
+<body>
+<div class="container">
+    <div class="popup1" >
+        <h2 style="color:white;">Are you sure to confirm</h2>
+        <a href="register"><button  class="btn" >Cancel</button></a>
+        <button type="submit" class="btn" onclick="openPopup()">Ok</button>
+    </div>
+
+    <div class="popup" id="popup">
+        <h2>Successful</h2>
+        <p>Your details has been successfully submitted </p>
+        <a href="login" class="btn"><button type="button" >Continue</button></a>
+    </div>
+    <script>
+        let popup=document.getElementById("popup");
+        function openPopup(){
+        popup.classList.add("open-popup");
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br><br><br><br>
+<h2 class="text center" style="margin-left: 20px;color:white"> Favorite Movies  </h2>
+
+
+
+        <div class="container">
+
+            <div class="row justify-content-center m-4">
+ {% for item in cart_items %}
+<div class="col-md-4">
+                            <div class="card m-3 p-2" style="width: 18rem; height: 30rem; box-shadow: 4px 4px #c291fa; border-radius: 25px 15px;">
+                                <img src="{{item.movie.img.url}}" style="height: 300px; width: 270px;"  class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h4 class="card-title mt-1">{{ item.movie.name }}</h4>
+                                  <a href="{% url 'remove_from_cart' item.id %}">Remove</a>
+                                    <span><a href="{% url 'detail' item.movie.id %}" style="background-color: #5707b3;" class="btn btn-primary m-1">Detail</a></span>                                </div>
+                            </div>
+                        </div>
+{% empty %}
+    <h3><p style="color:white">No favorite movies</p></h3>
+    {% endfor %}
+
+
+</div></div>
+
+
+{% endblock %}}

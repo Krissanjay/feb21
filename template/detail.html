@@ -1,0 +1,72 @@
+
+
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+<div class="container">
+
+  <div class="row justify-content-center">
+      <div class="col-md-5">
+        <a href="{% url 'movie_list' %}" class="btn btn-primary mt-2" >Back</a>
+          <div class="card m-5 p-2" style="width: 25rem;">
+              <img src="{{movie.img.url}}" class="card-img-top" alt="...">
+              <div class="card-body">
+                  <h5 class="card-title m-1"><b> {{movie.name}}</b></h5>
+                  <p style="font-size: 14px;" class="btn btn-warning m-1 p-1">{{ movie.category}}</p>
+                  <hr>
+                  <p style="font-size: 15px;" class="card-text mt-1">Description: {{movie.desc}}</p>
+                  <p style="font-size: 13px;" class="cart-text mt-1">Release date : {{ movie.release_date }}</p>
+                  <p style="font-size: 13px;" class="cart-text mt-1">Actors : {{ movie.actors }}</p>
+                  <a href="{% url 'add_to_cart' movie.id %}"  class="btn btn-success m-1"> Add to favorites </a>
+                  <a href="{{movie.trailer}}" class="btn btn-primary m-1"> Trailer </a>
+
+                  {% if request.user == movie.manager %}
+
+                  <a href="{% url 'update' movie.id %}" class="btn btn-danger m-1"> Update </a>
+                  <a href="{% url 'delete' movie.id %}" class="btn btn-primary m-1"> Delete </a>
+                  {% endif %}
+                  </div>
+
+                 <div class="col-md-6">
+         <div style="margin: 5px padding:2px">
+            <h4>Comments.....</h4>
+            <hr>
+
+            {% if not movie.comments.all %}
+
+                <p>Not comments added yet...</p>
+               <p><a class="btn btn-primary" href="{% url 'add_comment' movie.id %}">  Add Comment </a></p>
+
+            {% else %}
+ <p><a class="btn btn-primary" href="{% url 'add_comment' movie.id %}">  Add Comment </a></p>
+
+                  {% for comment in movie.comments.all %}
+
+                    <h5><strong>{{ comment.commenter_name }}</strong></h5>
+                    <p>{{ comment.comment_body }}</p>
+                    <p><small>{{ comment.date_added }}</small></p>
+
+                    {% if request.user.username == comment.commenter_name %}
+
+                        <p><a class="btn btn-danger" href="{% url 'delete_comment' movie.id %}">  Delete Comment </a></p>
+
+                    {% endif %}
+                {% endfor %}
+              {% endif %}
+
+
+
+         </div>
+      </div>
+          </div>
+      </div>
+  </div>
+
+</div>
+
+
+
+      {% endblock %}
